@@ -1,6 +1,15 @@
 #include "dv.h"
 #include <stdlib.h>
 
+/*
+typedef struct vetor{
+	unsigned int tamanhoAtual;
+	unsigned int capacidade;
+	int *p;
+} Vetor;
+
+*/
+
 void vInit(Vetor *v){
 	v->tamanhoAtual = 0;
 	v->capacidade = CAPACIDADE_INICIAL;
@@ -11,20 +20,21 @@ void vInit(Vetor *v){
 
 void vInsere(Vetor *v, int valor){
 	vDobraCapacidade(v);
-
 	(v->p)[v->tamanhoAtual++] = valor;
 }
 
 void vDobraCapacidade(Vetor *v){
-	if((v->tamanhoAtual) >= (v->capacidade)){
+	if((v->tamanhoAtual) == (v->capacidade)){
 		v->capacidade *= 2;
 		v->p = realloc(v->p, sizeof(int) * v->capacidade);
 	}
 }
-
+	
 void vFree(Vetor *v){
 	if(v == NULL) return;
 
 	free(v->p);
 	v->p = NULL;
+
+	v->tamanhoAtual = v->capacidade = 0;
 }

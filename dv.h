@@ -1,4 +1,4 @@
-#define CAPACIDADE_INICIAL 50
+#define CAPACIDADE_INICIAL 20
 
 typedef struct vetor{
 	unsigned int tamanhoAtual;
